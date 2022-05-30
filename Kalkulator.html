@@ -1,46 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<title>Kalkulator Wiktor Krasoń </title>
+<meta charset="utf-8" />
+<style type="text/css">
+#calculator {
+    background: #eaeaea;
+    margin: 0 auto;
+    padding: 80px 25px 35px 25px;
+    width: 400px;
+    text-align: center;
+}
+#calculator button {
+    padding: 15px;
+    width: 80px;
+}
+#calculator input[type="text"] {
+    padding: 15px;
+    width: 147px;
+    margin-bottom: 5px;
+}
+</style>
+<script>
+function Calculator(operator)
+{
+    var a = document.getElementById('a').value;
+    var b = document.getElementById('b').value;
+
+    switch(operator)
+    {
+        case '+':
+            var result = parseFloat(a) + parseFloat(b);
+        break;
+        case '-':
+            var result = parseFloat(a) - parseFloat(b);
+        break;
+        case 'x':
+            var result = parseFloat(a) * parseFloat(b);
+        break;
+        case '/':
+            var result = parseFloat(a) / parseFloat(b);
+        break;
+    }
+
+    document.getElementById('result').value = '= ' + result;
+}
+</script>
 </head>
 <body>
-    <input type="text" placeholder="1" id="liczba1">
-    <input type="text" placeholder="2" id="liczba2">
-    <br>
-    <button onclick="pomnoz()">pomnóż</button>
-    <button onclick="podziel()">podziel</button>
-    <button onclick="dodaj()">dodaj</button>
-    <button onclick="odejmij()">odejmij</button>
-    <h3>Wynik: </h3>
-    <div id="wynik"></div>
-    <script>
-        function dodaj(){
-    var liczba1=parseInt(document.getElementById("liczba1").value);
-    var liczba2=parseInt(document.getElementById("liczba2").value);
-    var wynik_tym=liczba1+liczba2;
-    document.getElementById("wynik").innerHTML=wynik_tym;
-}
-function odejmij(){
-    var liczba1=parseInt(document.getElementById("liczba1").value);
-    var liczba2=parseInt(document.getElementById("liczba2").value);
-    var wynik_tym=liczba1-liczba2;
-    document.getElementById("wynik").innerHTML=wynik_tym;
-}
-function pomnoz(){
-    var liczba1=parseInt(document.getElementById("liczba1").value);
-    var liczba2=parseInt(document.getElementById("liczba2").value);
-    var wynik_tym=liczba1*liczba2;
-    document.getElementById("wynik").innerHTML=wynik_tym;
-}
-function podziel(){
-    var liczba1=parseInt(document.getElementById("liczba1").value);
-    var liczba2=parseInt(document.getElementById("liczba2").value);
-    var wynik_tym=liczba1/liczba2;
-    document.getElementById("wynik").innerHTML=wynik_tym;
-}
-    </script>
+<form id="calculator">
+    <input type="text" id="a" placeholder="a" />
+    <input type="text" id="b" placeholder="b" />
+    <input type="text" id="result" placeholder="=" disabled="disabled" />
+    <button type="button" onclick="Calculator(this.innerHTML)">+</button>
+    <button type="button" onclick="Calculator(this.innerHTML)">-</button>
+
+</form>
 </body>
 </html>
